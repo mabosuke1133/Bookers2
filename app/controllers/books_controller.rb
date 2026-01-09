@@ -6,6 +6,9 @@ class BooksController < ApplicationController
   end
 
   def show
+   @book = Book.find(params[:id]) # URLの番号から、表示したい本を1件見つける
+   @user = @book.user             # その本を投稿したユーザーの情報を取得
+   @new_book = Book.new           # 左側のサイドバーにある「New book」用
   end
 
   def edit
@@ -33,7 +36,7 @@ end
 
 private
 
-  # 6. 【book_paramsの定義】セキュリティのための許可リスト
+  # 6. セキュリティのための許可リスト
   def book_params
     params.require(:book).permit(:title, :body)
   end
