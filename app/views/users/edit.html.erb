@@ -1,4 +1,15 @@
 <div class="container">
+  <% if @user.errors.any? %>
+    <div id="error_explanation" class="text-danger">
+      <h3><%= @user.errors.count %> errors prohibited this user from being saved:</h3>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
   <div class="row">
     <div class="col-sm-12 col-md-8 col-lg-6 px-5 px-sm-0 mx-auto">
       <h2>User info</h2>
