@@ -26,16 +26,16 @@ class UsersController < ApplicationController
      redirect_to user_path(@user.id), notice: "You have updated user successfully."
    else
     render :edit
+   end
   end
-end
 
-private
+ private
 
-def user_params
-  params.require(:user).permit(:name, :introduction, :profile_image)
-end
+ def user_params
+  params.require(:user).permit(:name, :introduction, :profile_image_id)
+ end
 
-def ensure_correct_user
+ def ensure_correct_user
     @user = User.find(params[:id])
     unless @user == current_user
       # もし本人じゃなければ、自分の詳細ページ(show)に強制送還！

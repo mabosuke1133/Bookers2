@@ -1,8 +1,11 @@
 class Book < ApplicationRecord
+  # 1. 誰のものか（ユーザーに属する）という設定
   belongs_to :user
 
-  # Titleは空ではない（必須）
+  # 2. 空欄を許さない設定（タイトルと感想）
   validates :title, presence: true
-  # Opinion（body）は空ではなく、かつ200文字以内
-  validates :body, presence: true, length: { maximum: 200 }
+  validates :body, presence: true
+  
+  # 3. 感想（body）の文字数を制限する設定
+  validates :body, length: { maximum: 200 }
 end
