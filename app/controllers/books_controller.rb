@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+  # ログインしていない場合はログイン画面に送る
+  before_action :authenticate_user!
+  
   def index
    @book = Book.new
    @books = Book.all 

@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  # ログインしていない場合はログイン画面に送る
+  before_action :authenticate_user!
+  
   def index
    @users = User.all       # 全ユーザーを取得して一覧に出す
    @book = Book.new        # サイドバーの「New book」用
